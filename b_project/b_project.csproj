@@ -9,6 +9,8 @@
     <Company>Acme</Company>
     <Description>Danger zone</Description>
     <Copyright>Copyright © 2021 Acme</Copyright>
+    <PackageDescription>Blablabla</PackageDescription>
+    <RepositoryUrl>https://github.com/Sondergaard/Funet</RepositoryUrl>
   </PropertyGroup>
 
 </Project>

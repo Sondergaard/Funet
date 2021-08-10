@@ -10,6 +10,8 @@
     <Description>Danger zone</Description>
     <Copyright>Copyright © 2021 Acme</Copyright>
     <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+    <PackageDescription>Yayayay</PackageDescription>
+    <RepositoryUrl>https://github.com/Sondergaard/Funet</RepositoryUrl>
   </PropertyGroup>
 
   <ItemGroup>
