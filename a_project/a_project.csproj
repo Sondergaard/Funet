@@ -1,0 +1,30 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+    <Version>1.0.0</Version>
+    <Product>Awesome Project A</Product>
+    <PackageId>funet.project.a</PackageId>
+    <Authors>Me</Authors>
+    <Company>Acme</Company>
+    <Description>Danger zone</Description>
+    <Copyright>Copyright © 2021 Acme</Copyright>
+    <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="funet.project.b" Version="1.0.*"/>
+  </ItemGroup>
+  
+  <ItemGroup>
+    <ProjectReference Include="..\b_project\b_project.csproj">
+<!--      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>-->
+<!--      <IncludeAssets>b_project.dll</IncludeAssets>-->
+    </ProjectReference>
+  </ItemGroup>
+  <Target DependsOnTargets="ResolveReferences" Name="CopyProjectReferencesToPackage">
+    <ItemGroup>
+      <BuildOutputInPackage Include="@(ReferenceCopyLocalPaths->WithMetadataValue('ReferenceSourceTarget', 'ProjectReference'))"/>
+    </ItemGroup>
+  </Target>
+</Project>
