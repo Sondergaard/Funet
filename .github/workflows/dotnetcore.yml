@@ -12,7 +12,7 @@ jobs:
       - uses: ./.github/actions/semver
         id: a_project_version
         with:
-          csproj: a_project/a_project.csproj
+          csproj: 'a_project/a_project.csproj'
 
       - name: Show version
         run: echo ${{ steps.a_project_version.next-version }}
