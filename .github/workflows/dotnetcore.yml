@@ -15,7 +15,7 @@ jobs:
       
       - name: Retrieve version
         run: |
-          echo "::set-output name=TAG_NAME::$(xmllint --xpath 'string(//Project/PropertyGroup[1]/Version))' a_project/a_project.csproj)"
+          echo "::set-output name=TAG_NAME::$(xmllint --xpath 'string(//Project/PropertyGroup[1]/Version)' a_project/a_project.csproj)"
         id: version
 
       - name: Show version
