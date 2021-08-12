@@ -9,13 +9,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - uses: ./.github/actions/semver
-        id: a_project_version
-        with:
-          csproj: 'a_project/a_project.csproj'
-
       - name: Show version
-        run: echo ${{ steps.a_project_version.next-version }}
+        run: echo xmllint --xpath 'string(//Project/PropertyGroup[1]/Version)' a_project/a_project.csproj
 #      - name: Setup .NET Core
 #        uses: actions/setup-dotnet@v1
 #        with:
