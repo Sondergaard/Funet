@@ -24,18 +24,18 @@ jobs:
           echo ${{ steps.project_a.outputs.next-version }}
           echo ${{ steps.project_b.outputs.next-version }}
 
-#      - name: Setup .NET Core
-#        uses: actions/setup-dotnet@v1
-#        with:
-#          dotnet-version: '5.0'
-#      
-#      - name: Build with dotnet
-#        run: dotnet build --configuration Release
-#      
-#      - name: Pack with dotnet
-#        run: |
-#          dotnet pack b_project/b_project.csproj --output nuget-packages --configuration Release
-#          dotnet pack a_project/a_project.csproj --output nuget-packages --configuration Release
-#
-#      - name: Push with dotnet
-#        run: dotnet nuget push nuget-packages/*nupkg --api-key ${{ secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
+      - name: Setup .NET Core
+        uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '5.0'
+      
+      - name: Build with dotnet
+        run: dotnet build --configuration Release
+      
+      - name: Pack with dotnet
+        run: |
+          dotnet pack b_project/b_project.csproj --output nuget-packages --configuration Release /p:Version=${{ steps.project_b.outputs.next-version }}
+          dotnet pack a_project/a_project.csproj --output nuget-packages --configuration Release /p:Version=${{ steps.project_a.outputs.next-version }}
+
+      - name: Push with dotnet
+        run: dotnet nuget push nuget-packages/*nupkg --api-key ${{ secrets.NUGET_API_KEY}} --source https://api.nuget.org/v3/index.json
