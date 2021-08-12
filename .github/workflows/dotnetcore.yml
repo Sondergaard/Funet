@@ -14,8 +14,16 @@ jobs:
         with:
           csproj: 'a_project/a_project.csproj'
 
+      - uses: ./.github/actions/semver
+        id: project_b
+        with:
+          csproj: 'b_project/b_project.csproj'
+
       - name: Show version
-        run: echo ${{ steps.project_a.outputs.next-version }}
+        run: | 
+          echo ${{ steps.project_a.outputs.next-version }}
+          echo ${{ steps.project_b.outputs.next-version }}
+          
 #      - name: Setup .NET Core
 #        uses: actions/setup-dotnet@v1
 #        with:
