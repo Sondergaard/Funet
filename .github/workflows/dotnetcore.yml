@@ -8,6 +8,10 @@ jobs:
 
     steps:
       - uses: actions/checkout@v2
+
+      - name: Add xml utils
+        run: |
+          apt-get install libxml2-utils
       
       - name: Retrieve version
         run: |
