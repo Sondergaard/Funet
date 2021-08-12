@@ -15,6 +15,6 @@ runs:
   using: composite
   steps:
     - id: semver-generator
-      run: echo "::set-output name=next::$(echo xmllint --xpath 'string(//Project/PropertyGroup[1]/Version)' ${{ inputs.csproj }})"
+      run: echo "::set-output name=next::$(xmllint --xpath 'string(//Project/PropertyGroup[1]/Version)' ${{ inputs.csproj }})"
       shell: bash
   
