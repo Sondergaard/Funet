@@ -11,7 +11,7 @@ jobs:
 
       - name: Add xml utils
         run: |
-          apt-get install libxml2-utils
+          sudo apt-get install libxml2-utils
       
       - name: Retrieve version
         run: |
