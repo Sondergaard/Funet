@@ -9,14 +9,13 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       
-      - name: Fetch all history for all tags and branches
-        run: git fetch --prune
-
-      - name: Install GitVersion
-        uses: gittools/actions/gitversion/setup@v0.9
+      - uses: ./.github/actions/semver
+        id: a_project_version
         with:
-            versionSpec: '5.1.x'
+          csproj: a_project/a_project.csproj
 
+      - name: Show version
+        run: echo ${{ steps.a_project_version.next-version }}
 #      - name: Setup .NET Core
 #        uses: actions/setup-dotnet@v1
 #        with:

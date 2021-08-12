@@ -1,0 +1,20 @@
+name: 'semver generator'
+description: 'Generate semver from csproj file and github execution id'
+
+inputs:
+  csproj:
+    description: 'path to csproj file containg version element'
+    required: true
+
+outputs:
+  next-version:
+    description: "The next version number"
+    value: ${{ steps.semver-generator.outputs.next}}
+
+runs:
+  using: composite
+  steps:
+    - id: semver-generator
+      run: echo "::set-output name=next::$(echo xmllint --xpath 'string(//Project/PropertyGroup[1]/Version)' ${{ inputs.csproj }})"
+      shell: bash
+  
