@@ -11,17 +11,17 @@
     <Copyright>Copyright © 2021 Acme</Copyright>
     <TargetsForTfmSpecificBuildOutput>$(TargetsForTfmSpecificBuildOutput);CopyProjectReferencesToPackage</TargetsForTfmSpecificBuildOutput>
     <PackageDescription>Yayayay</PackageDescription>
-    <RepositoryUrl>https://github.com/Sondergaard/Funet</RepositoryUrl>
+    <RepositoryUrl>https://github.com/Sondergaard/Funet</RepositoryUrl>    
   </PropertyGroup>
-
+  
   <ItemGroup>
     <PackageReference Include="funet.project.b" Version="1.1.*"/>
   </ItemGroup>
   
   <ItemGroup>
     <ProjectReference Include="..\b_project\b_project.csproj">
-<!--      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>-->
-<!--      <IncludeAssets>b_project.dll</IncludeAssets>-->
+      <ReferenceOutputAssembly>true</ReferenceOutputAssembly>
+      <IncludeAssets>b_project.dll</IncludeAssets>
     </ProjectReference>
   </ItemGroup>
   <Target DependsOnTargets="ResolveReferences" Name="CopyProjectReferencesToPackage">
