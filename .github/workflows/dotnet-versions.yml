@@ -9,19 +9,19 @@ jobs:
         dotnet: ['5.0.*', '6.0.*']
     runs-on: ${{ matrix.os }}
     steps:
-      - name: Configure restore folder Linux
-        if: ${{ matrix.os == 'ubuntu-latest' }}
-        run: |
-          echo "NUGET_PACKAGES=${{ github.workspace }}/nuget_cache" >> $GITHUB_ENV
-          
-      - name: Configure restore folder Windows
-        if: ${{ matrix.os == 'windows-latest' }}
-        run: |
-          echo "setx NUGET_PACKAGES ${{ github.workspace }}\nuget_cache" >> $GITHUB_ENV
-    
       - name: Setup .NET Core ${{ matrix.dotnet }}
         uses: actions/setup-dotnet@v1
         with:
           dotnet-version: ${{ matrix.dotnet }}
-      - name: Display nuget path
-        run: dotnet nuget locals all --list
+    
+      - name: Display nuget path - Linux
+        if: ${{ matrix.os == 'ubuntu-latest' }}
+        run: |
+          NUGET_PACKAGES=${{ github.workspace }}/nuget_cache
+          dotnet nuget locals all --list
+          
+      - name: Display nuget path - Windows
+        if: ${{ matrix.os == 'windows-latest' }}
+        run: |
+          setx NUGET_PACKAGES ${{ github.workspace }}\nuget_cache
+          dotnet nuget locals all --list
