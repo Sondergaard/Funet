@@ -12,12 +12,12 @@ jobs:
       - name: Configure restore folder Linux
         if: ${{ matrix.os == 'ubuntu-latest' }}
         run: |
-          echo "NUGET_PACKAGES=${{ github.workspace }}nuget_cache" >> $GITHUB_ENV
+          echo "NUGET_PACKAGES=${{ github.workspace }}/nuget_cache" >> $GITHUB_ENV
           
       - name: Configure restore folder Windows
         if: ${{ matrix.os == 'windows-latest' }}
         run: |
-          echo "SET NUGET_PACKAGES=${{ github.workspace }}nuget_cache" >> $GITHUB_ENV
+          echo "setx NUGET_PACKAGES ${{ github.workspace }}\nuget_cache" >> $GITHUB_ENV
     
       - name: Setup .NET Core ${{ matrix.dotnet }}
         uses: actions/setup-dotnet@v1
