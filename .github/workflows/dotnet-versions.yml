@@ -1,7 +1,6 @@
 name: List nuget paths
 
 on: [workflow_dispatch]
-
 jobs:
   displayPaths:
     strategy:
@@ -10,6 +9,10 @@ jobs:
         dotnet: ['5.0.*', '6.0.*']
     runs-on: ${{ matrix.os }}
     steps:
+      - name: Configure restore folder
+        run: |
+          echo "NUGET_PACKAGES=nuget_cache" >> $GITHUB_ENV
+    
       - name: Setup .NET Core ${{ matrix.dotnet }}
         uses: actions/setup-dotnet@v1
         with:
